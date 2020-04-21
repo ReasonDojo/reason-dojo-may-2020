@@ -27,9 +27,12 @@ Group DMs on Discord will be used to communicate with you and your group during 
 Now that you have that, you can create a group. Follow these steps:
 1. Inside the Discord app, navigate to the Home page (click the Discord icon in the left sidebar)
 ![screenshot showing the Discord Home icon](images/discord-home-icon.png)
+
 2. Under direct messages, click the "+" icon 
 ![screenshot showing the plus icon for creating a DM on Discord](images/create-dm-discord.png)
+
 3. Type the username of the friends that you want to add to your group
 ![screenshot showing where to type the names of your group members.](images/group-dm-discord-type-name.png)
+
 4. Click "Create Group DM" 
 ![screenshot showing the button to click to create a group dm on Discord](images/create-group-dm-button.png)
