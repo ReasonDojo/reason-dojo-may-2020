@@ -7,6 +7,8 @@
     - [Description](#description)
     - [Schedule](#schedule)
     - [Location (virtual)](#location-virtual)
+    - [Socializing](#socializing)
+    - [Getting Help](#getting-help)
   - [Resources](#resources)
     - [Prepping for the event](#prepping-for-the-event)
     - [Creating a Group DM on Discord](#creating-a-group-dm-on-discord)
@@ -49,6 +51,20 @@ Below is the schedule for the event. We expect it to run for ~3hrs:
 This particular event is happening online using a combination of Zoom and Discord. The main sessions (Introduction, Demos, and Closing) will take place on Zoom and be recorded. The Hacking Session will take place on Discord. We encourage you to use Group DMs to coordinate with your team members over voice or video chat.
 
 We will also have places to socialize during the event on both Discord and Zoom.
+
+### Socializing
+
+One of the hardest parts of virtual meeetups is creating space for free form socializing. To combat this, we will have three places you can socialize during the event:
+- Zoom: we will keep the main Zoom going during the Hacking Session. Feel free to stay on and chat with others.
+- Discord #general voice chat room: this is a room where you can voice chat with others
+- #bikeshedding: a Discord channel that is great for chatting about anything really
+
+### Getting Help
+
+If you need help (technical/non-technical), we suggest following this approach:
+1. Ask you group members. If they don't know, chances are they'll be able to tell you where to look/post.
+2. Post in the #general channel - this is where most members hang out and will have high visibility
+3. DM Joe(@jsjoeio) or Sean(@sgrove)
 
 ## Resources
 
