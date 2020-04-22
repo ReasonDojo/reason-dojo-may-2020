@@ -96,13 +96,13 @@ This event wouldn't be possible with out the lovely folks from the Reason commun
 
 <table>
   <tr valign="top">
-    <td height="300px" width="50%" align="center" colspan="2">
+    <td width="50%" align="center" colspan="2">
       <a href="https://opensource.facebook.com/">Facebook Open Source</a><br>
-      <a href="https://opensource.facebook.com/"><img src="https://res.cloudinary.com/opencollective/image/upload/v1508519428/S9gk78AS_400x400_fulq2l.jpg"></a>
+      <a href="https://opensource.facebook.com/"><img height="300px" width="300px" src="https://res.cloudinary.com/opencollective/image/upload/v1508519428/S9gk78AS_400x400_fulq2l.jpg"></a>
     </td>
-    <td height="205px" width="50%" align="center" colspan="2">
+    <td width="50%" align="center" colspan="2">
       <a href="https://www.onegraph.com">OneGraph</a><br>
-      <a href="https://www.onegraph.com"><img src="https://www.onegraph.com/static/media/landing-logo-grey.a79a936f.svg"></a>
+      <a href="https://www.onegraph.com"><img height="300px" width="300px" src="https://www.onegraph.com/static/media/landing-logo-grey.a79a936f.svg"></a>
     </td>
   </tr>
 </table>
