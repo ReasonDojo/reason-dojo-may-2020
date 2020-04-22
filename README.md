@@ -6,6 +6,7 @@ TODO fill this out more
   - [Table of Contents](#table-of-contents)
   - [Schedule](#schedule)
   - [Creating a Group DM on Discord](#creating-a-group-dm-on-discord)
+  - [Projects Built during this Dojo](#projects-built-during-this-dojo)
 
 ## Schedule
 
@@ -36,3 +37,7 @@ Now that you have that, you can create a group. Follow these steps:
 
 4. Click "Create Group DM" 
 ![screenshot showing the button to click to create a group dm on Discord](images/create-group-dm-button.png)
+
+## Projects Built during this Dojo
+
+After this event, we will invite groups to open PRs to add links to their projects here:
