@@ -7,6 +7,7 @@
     - [Description](#description)
     - [Schedule](#schedule)
     - [Location (virtual)](#location-virtual)
+    - [What We're Building](#what-were-building)
     - [Socializing](#socializing)
     - [Getting Help](#getting-help)
   - [Resources](#resources)
@@ -51,6 +52,25 @@ Below is the schedule for the event. We expect it to run for ~3hrs:
 This particular event is happening online using a combination of Zoom and Discord. The main sessions (Introduction, Demos, and Closing) will take place on Zoom and be recorded. The Hacking Session will take place on Discord. We encourage you to use Group DMs to coordinate with your team members over voice or video chat.
 
 We will also have places to socialize during the event on both Discord and Zoom.
+
+### What We're Building
+
+During the event, we will build a web app for reminding you to take breaks (inspired by [stretchly](https://github.com/hovancik/stretchly)).
+
+You will be tasked with completing the following requirements:
+
+As a user, I should be able to:
+- [ ]  set the frequency of my breaks (every 30 mins, every 30 secs).
+- [ ]  configure how long the break should be (5 secs) - make it configurable later
+
+As a web app, it should make sure that:
+- [ ]  the notification is triggered on the interval 
+
+As a user, I should be able to see:
+- [ ]  a progress screen during the break that shows
+    - [ ]  a progress bar
+    - [ ]  how many mins/secs remaining
+    - [ ]  an exit button
 
 ### Socializing
 
