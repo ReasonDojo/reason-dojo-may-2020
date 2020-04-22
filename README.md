@@ -72,7 +72,7 @@ Now that you have that, you can create a group. Follow these steps:
 
 2. Under direct messages, click the "+" icon
 
-![screenshot showing the plus icon for creating a DM on Discord](images/create-dm-discord.png)
+![screenshot showing the plus icon for creating a DM on Discord](images/create-dm.png)
 
 3. Type the username of the friends that you want to add to your group
 
