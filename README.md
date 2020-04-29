@@ -134,15 +134,4 @@ This repo, the code and the event materials are all licensed under the MIT Licen
 
 This event wouldn't be possible with out the lovely folks from the Reason community and support form the following companies:
 
-<table>
-  <tr valign="top">
-    <td width="50%" align="center" colspan="2">
-      <a href="https://opensource.facebook.com/">FACEBOOK Open Source</a><br>
-      <a href="https://opensource.facebook.com/"><img height="300px" width="300px" src="./images/fb-logo.png"></a>
-    </td>
-    <td width="50%" align="center" colspan="2">
-      <a href="https://www.onegraph.com">OneGraph</a><br>
-      <a href="https://www.onegraph.com"><img height="300px" width="300px" src="https://www.onegraph.com/static/media/landing-logo-grey.a79a936f.svg"></a>
-    </td>
-  </tr>
-</table>
+<img src="./images/fb-logo.png" alt="Facebook logo." width="300" /><img src="https://www.onegraph.com/static/media/landing-logo-grey.a79a936f.svg" alt="OneGraph Logo." width="300"/>
