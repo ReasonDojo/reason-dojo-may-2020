@@ -136,11 +136,11 @@ This event wouldn't be possible with out the lovely folks from the Reason commun
 
 <table>
   <tr>
-    <td align="center"><a href="https://opensource.facebook.com/">FACEBOOK Open Source</a></td>
+    <td align="center" bgcolor="white"><a href="https://opensource.facebook.com/">FACEBOOK Open Source</a></td>
     <td align="center"><a href="https://onegraph.com">OneGraph</a></td>
   </tr>
   <tr>
-    <td><img src="./images/fb-logo.png" width="200"></td>
-    <td><img src="https://www.onegraph.com/static/media/landing-logo-grey.a79a936f.svg" width="120"></td>
+    <td style="background: white;"><img src="./images/fb-logo.png" width="200"></td>
+    <td style="background: white;"><img src="https://www.onegraph.com/static/media/landing-logo-grey.a79a936f.svg" width="120"></td>
   </tr>
  </table>
