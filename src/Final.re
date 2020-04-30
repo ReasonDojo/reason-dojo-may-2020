@@ -1,6 +1,7 @@
 /*
    Ideas for exploration: requestAnimationFrame
    Add routes for idle/working/on-break
+   Clear/restore the interval when exiting/restarting
  */
 
 type schedule = {
@@ -60,26 +61,36 @@ let make = () => {
       switch (state) {
       | Idle => ()
       | Working({ends}) =>
-        switch (nowMs > ends) {
-        | false => ()
-        | true =>
-          setState(_ =>
-            OnBreak({starts: nowMs, ends: nowMs +. fiveMinutesInMilliseconds})
-          )
-        }
+        nowMs > ends
+          ? setState(_ =>
+              OnBreak({
+                starts: nowMs,
+                ends: nowMs +. fiveMinutesInMilliseconds,
+              })
+            )
+          : ()
       | OnBreak({ends}) =>
-        switch (nowMs > ends) {
-        | false => ()
-        | true =>
-          setState(_ =>
-            Working({starts: nowMs, ends: nowMs +. fiveMinutesInMilliseconds})
-          )
-        }
+        nowMs > ends
+          ? setState(_ =>
+              Working({
+                starts: nowMs,
+                ends: nowMs +. fiveMinutesInMilliseconds,
+              })
+            )
+          : ()
       };
       None;
     },
     [|nowMs|],
   );
+
+  let progress =
+    switch (state) {
+    | Idle => progressBar(~starts=0.0, ~ends=1.0, ~nowMs=0.0)
+    | Working({starts, ends})
+    | OnBreak({starts, ends}) => progressBar(~starts, ~ends, ~nowMs)
+    };
+
   React.(
     <div>
       <button
@@ -93,31 +104,24 @@ let make = () => {
             }
           );
         }}>
-        "Toggle"->string
+        (
+          switch (state) {
+          | Idle => "Start"
+          | _ => "Stop"
+          }
+        )
+        ->string
       </button>
+      progress
+      <br />
       {switch (state) {
-       | Idle =>
-         <>
-           {progressBar(~starts=0.0, ~ends=1.0, ~nowMs=0.0)}
-           <br />
-           {j|No break scheduled|j}->string
-         </>
-       | Working({starts, ends}) =>
+       | Idle => {j|No break scheduled|j}->string
+       | Working({ends}) =>
          let secondsRemaining = int_of_float((ends -. nowMs) /. 1000.0);
-
-         <>
-           {progressBar(~starts, ~ends, ~nowMs)}
-           <br />
-           {j|Next break in $secondsRemaining seconds.|j}->string
-         </>;
-       | OnBreak({starts, ends}) =>
+         {j|Next break in $secondsRemaining seconds.|j}->string;
+       | OnBreak({ends}) =>
          let secondsRemaining = int_of_float((ends -. nowMs) /. 1000.0);
-
-         <>
-           {progressBar(~starts, ~ends, ~nowMs)}
-           <br />
-           {j|On break for another $secondsRemaining seconds|j}->string
-         </>;
+         {j|On break for another $secondsRemaining seconds|j}->string;
        }}
     </div>
   );
