@@ -16,6 +16,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "re-tailwind": "0.0.10",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "reason-react": "0.8.0-dev.4"
