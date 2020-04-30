@@ -1,5 +1,6 @@
 /*
    Ideas for exploration: requestAnimationFrame
+   Add routes for idle/working/on-break
  */
 
 type schedule = {
@@ -9,7 +10,7 @@ type schedule = {
 
 type state =
   | Idle
-  | BreakScheduled(schedule)
+  | Working(schedule)
   | OnBreak(schedule);
 
 let fiveMinutesInMilliseconds = 5.0 *. 1000.0;
@@ -45,10 +46,7 @@ let make = () => {
 
   let (state, setState) =
     React.useState(() =>
-      BreakScheduled({
-        starts: nowMs,
-        ends: nowMs +. fiveMinutesInMilliseconds,
-      })
+      Working({starts: nowMs, ends: nowMs +. fiveMinutesInMilliseconds})
     );
 
   React.useEffect0(() => {
@@ -61,7 +59,7 @@ let make = () => {
     () => {
       switch (state) {
       | Idle => ()
-      | BreakScheduled({ends}) =>
+      | Working({ends}) =>
         switch (nowMs > ends) {
         | false => ()
         | true =>
@@ -74,10 +72,7 @@ let make = () => {
         | false => ()
         | true =>
           setState(_ =>
-            BreakScheduled({
-              starts: nowMs,
-              ends: nowMs +. fiveMinutesInMilliseconds,
-            })
+            Working({starts: nowMs, ends: nowMs +. fiveMinutesInMilliseconds})
           )
         }
       };
@@ -93,10 +88,7 @@ let make = () => {
           setState(oldState =>
             switch (oldState) {
             | Idle =>
-              BreakScheduled({
-                starts: now,
-                ends: now +. fiveMinutesInMilliseconds,
-              })
+              Working({starts: now, ends: now +. fiveMinutesInMilliseconds})
             | _ => Idle
             }
           );
@@ -110,7 +102,7 @@ let make = () => {
            <br />
            {j|No break scheduled|j}->string
          </>
-       | BreakScheduled({starts, ends}) =>
+       | Working({starts, ends}) =>
          let secondsRemaining = int_of_float((ends -. nowMs) /. 1000.0);
 
          <>
