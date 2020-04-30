@@ -90,10 +90,12 @@ let make = () => {
     | Working({starts, ends})
     | OnBreak({starts, ends}) => progressBar(~starts, ~ends, ~nowMs)
     };
+    // bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded
 
   React.(
-    <div>
+    <div >
       <button
+className=TW.([BackgroundColor(BgBlue500), TextColor(TextWhite), FontWeight(FontBold), Padding(Py2), Padding(Px4), BorderRadius(Rounded)] |> make)
         onClick={_ => {
           let now = Js.Date.now();
           setState(oldState =>
