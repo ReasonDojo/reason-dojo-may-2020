@@ -13,6 +13,11 @@
   - [Resources](#resources)
     - [Prepping for the event](#prepping-for-the-event)
     - [Creating a Group DM on Discord](#creating-a-group-dm-on-discord)
+  - [FAQ](#faq)
+    - [How will teams be divided up?](#how-will-teams-be-divided-up)
+    - [How am I going to shared an editor or my IDE with my group memebers?](#how-am-i-going-to-shared-an-editor-or-my-ide-with-my-group-memebers)
+    - [How am I going to chat with my group members?](#how-am-i-going-to-chat-with-my-group-members)
+    - [How will the moderators be able to check-in with each group?](#how-will-the-moderators-be-able-to-check-in-with-each-group)
   - [Projects Built during this Dojo](#projects-built-during-this-dojo)
   - [Contributing](#contributing)
   - [License](#license)
@@ -83,8 +88,8 @@ One of the hardest parts of virtual meeetups is creating space for free form soc
 
 If you need help (technical/non-technical), we suggest following this approach:
 1. Ask you group members. If they don't know, chances are they'll be able to tell you where to look/post.
-2. Post in the #general channel - this is where most members hang out and will have high visibility
-3. DM Joe(@jsjoeio) or Sean(@sgrove)
+2. Post in the #reason-dojo channel 
+3. If it should be brought up privately, you can DM Joe(@jsjoeio) or Sean(@sgrove)
 
 ## Resources
 
@@ -110,13 +115,66 @@ Now that you have that, you can create a group. Follow these steps:
 
 ![screenshot showing the plus icon for creating a DM on Discord](images/create-dm.png)
 
-3. Type the username of the friends that you want to add to your group
+3. Type the username of the friends that you want to add to your group (please include the moderators as well -- jsjoeio#7954 and sgrove#7438)
 
 ![screenshot showing where to type the names of your group members.](images/group-dm-discord-type-name.png)
 
 4. Click "Create Group DM" 
 
 ![screenshot showing the button to click to create a group dm on Discord](images/create-group-dm-button.png)
+
+## FAQ
+
+### How will teams be divided up?
+
+Ideally, each group will have 3 or more members. We will divide teams up evenly based on the number of attendees. Each group will have at least one experienced Reason developer. The least experienced person will drive while the others coach, mentor and guide. Everyone will work as a team.
+
+When it comes time to split up team members, here's what will happen:
+1. One of the moderators will let you know that it's time for team formation
+2. They will post on the #reason-dojo asking each person to react to the message with an emoji based on their experience (legend will be provided). Here's an example:
+```markdown
+EXPERIENCE POLL MESSAGE TEMPLATE
+---
+To divide up the groups evenly, please identify your experience level based on the following:
+1️⃣= "I'm new to Reason/I tried it online, but never set up a project for it"
+2️⃣= "I've set up a small side project"
+3️⃣= "I've published a project written in Reason"
+4️⃣= "I work full time in Reason"
+```
+3. After all attendees respond, the moderator will post a second message with the groups.
+```markdown
+GROUP ANNOUNCMENT MESSAGE TEMPLATE
+---
+Here are the groups:
+
+Group 1 - @name 
+Group 2 -
+Group 3 - 
+Group 4 - 
+Group 5 - 
+
+The first name listed for each group should be the one in charge of starting the Group DM. Please refer to the repo if you need instructions on how to do that. 
+
+Please make sure to add both of the moderators to your group as well. This will allow us to check-in and help as needed.
+Mods:
+- jsjoeio#7954
+- sgrove#7438 
+
+Link: <https://github.com/ReasonDojo/reason-dojo-may-2020#creating-a-group-dm-on-discord>
+```
+4. Group DMs will be created by the first person listed in the group.
+
+### How am I going to shared an editor or my IDE with my group memebers?
+
+We recommend using [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare). It's a VS Code extension that allows you to pair/mob-program with other members. If you get stuck or need help, post in the #reason-dojo channel and we'll assit you.
+
+### How am I going to chat with my group members?
+
+You can start a video or audio call in the Group DM. You should see an option in the top right part of the UI.
+
+### How will the moderators be able to check-in with each group?
+
+When you create the Group DM, make sure to add both of the moderators -- jsjoeio#7954 and sgrove#7438 -- this way, we can check in with you all and help when needed. 
 
 ## Projects Built during this Dojo
 
