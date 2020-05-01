@@ -4,15 +4,28 @@
    Clear/restore the interval when exiting/restarting
  */
 
+/* Handy for debug, but you won't always get what you expect out. Most useful
+   with records, string, ints, float, etc. */
+[@bs.val]
+external prettyStringify:
+  ('a, [@bs.as {json|null|json}] _, [@bs.as {json|2|json}] _) => string =
+  "JSON.stringify";
+
 type schedule = {
   starts: float,
   ends: float,
 };
 
-type state =
+type activity =
   | Idle
   | Working(schedule)
   | OnBreak(schedule);
+
+type state = {
+  activity,
+  workLengthMs: float,
+  breakLengthMs: float,
+};
 
 let fiveMinutesInMilliseconds = 5.0 *. 1000.0;
 
@@ -47,7 +60,12 @@ let make = () => {
 
   let (state, setState) =
     React.useState(() =>
-      Working({starts: nowMs, ends: nowMs +. fiveMinutesInMilliseconds})
+      {
+        activity:
+          Working({starts: nowMs, ends: nowMs +. fiveMinutesInMilliseconds}),
+        workLengthMs: 20.0 *. 60.0 *. 1000.0,
+        breakLengthMs: 5.0 *. 60.0 *. 1000.0,
+      }
     );
 
   React.useEffect0(() => {
@@ -58,24 +76,29 @@ let make = () => {
 
   React.useEffect1(
     () => {
-      switch (state) {
+      switch (state.activity) {
       | Idle => ()
       | Working({ends}) =>
         nowMs > ends
-          ? setState(_ =>
-              OnBreak({
-                starts: nowMs,
-                ends: nowMs +. fiveMinutesInMilliseconds,
-              })
+          ? setState(oldState =>
+              {
+                ...oldState,
+                activity:
+                  OnBreak({
+                    starts: nowMs,
+                    ends: nowMs +. state.breakLengthMs,
+                  }),
+              }
             )
           : ()
       | OnBreak({ends}) =>
         nowMs > ends
-          ? setState(_ =>
-              Working({
-                starts: nowMs,
-                ends: nowMs +. fiveMinutesInMilliseconds,
-              })
+          ? setState(oldState =>
+              {
+                ...oldState,
+                activity:
+                  Working({starts: nowMs, ends: nowMs +. state.workLengthMs}),
+              }
             )
           : ()
       };
@@ -85,7 +108,7 @@ let make = () => {
   );
 
   let progress =
-    switch (state) {
+    switch (state.activity) {
     | Idle => progressBar(~starts=0.0, ~ends=1.0, ~nowMs=0.0)
     | Working({starts, ends})
     | OnBreak({starts, ends}) => progressBar(~starts, ~ends, ~nowMs)
@@ -106,7 +129,7 @@ let make = () => {
         className=TW.(
           [FontSize(Text6xl), FontWeight(FontLight), Margin(Mb4)] |> make
         )>
-        {switch (state) {
+        {switch (state.activity) {
          | Idle => {j|Click start when you start working|j}->string
          | Working(_) => {j|Keep working!|j}->string
          | OnBreak(_) => {j|Stretch your arms.|j}->string
@@ -115,7 +138,7 @@ let make = () => {
       progress
       <br />
       <span className=TW.([FontSize(TextLg)] |> make)>
-        {switch (state) {
+        {switch (state.activity) {
          | Idle => {j|No break scheduled|j}->string
          | Working({ends}) =>
            let secondsRemaining = int_of_float((ends -. nowMs) /. 1000.0);
@@ -147,15 +170,19 @@ let make = () => {
           onClick={_ => {
             let now = Js.Date.now();
             setState(oldState =>
-              switch (oldState) {
-              | Idle =>
-                Working({starts: now, ends: now +. fiveMinutesInMilliseconds})
-              | _ => Idle
+              {
+                ...oldState,
+                activity:
+                  switch (oldState.activity) {
+                  | Idle =>
+                    Working({starts: now, ends: now +. state.workLengthMs})
+                  | _ => Idle
+                  },
               }
             );
           }}>
           (
-            switch (state) {
+            switch (state.activity) {
             | Idle => "Start"
             | _ => "Stop"
             }
@@ -168,7 +195,7 @@ let make = () => {
         className=TW.(
           [Margin(Mt24), Margin(MxAuto), MaxWidth(MaxWSm)] |> make
         )>
-        {switch (state) {
+        {switch (state.activity) {
          | Idle =>
            <form
              className=TW.(
@@ -180,7 +207,9 @@ let make = () => {
                  Padding(Pb8),
                  Margin(Mb4),
                  Padding(Pt10),
-                 Display(Flex), FlexDirection(FlexCol), AlignItems(ItemsCenter)
+                 Display(Flex),
+                 FlexDirection(FlexCol),
+                 AlignItems(ItemsCenter),
                ]
                |> make
              )>
@@ -201,8 +230,31 @@ let make = () => {
                </label>
                <input
                  id="session-length"
-                 type_="number"
+                 type_="decimal"
                  placeholder="25"
+                 onChange={event => {
+                   switch (
+                     float_of_string_opt(
+                       ReactEvent.Form.target(event)##value,
+                     )
+                   ) {
+                   | None => ()
+                   | Some(minutes) =>
+                     setState(oldState => {
+                       let workLengthMs = minutes *. 60.0 *. 1000.0;
+                       {
+                         ...oldState,
+                         workLengthMs,
+                         activity:
+                           switch (oldState.activity) {
+                           | Working({starts}) =>
+                             Working({starts, ends: starts +. workLengthMs})
+                           | other => other
+                           },
+                       };
+                     })
+                   }
+                 }}
                  className=TW.(
                    [
                      BoxShadow(Shadow),
@@ -236,8 +288,31 @@ let make = () => {
                </label>
                <input
                  id="break-length"
-                 type_="number"
+                 type_="decimal"
                  placeholder="20"
+                 onChange={event => {
+                   switch (
+                     float_of_string_opt(
+                       ReactEvent.Form.target(event)##value,
+                     )
+                   ) {
+                   | None => ()
+                   | Some(seconds) =>
+                     setState(oldState => {
+                       let breakLengthMs = seconds *. 1000.0;
+                       {
+                         ...oldState,
+                         breakLengthMs,
+                         activity:
+                           switch (oldState.activity) {
+                           | OnBreak({starts}) =>
+                             OnBreak({starts, ends: starts +. breakLengthMs})
+                           | other => other
+                           },
+                       };
+                     })
+                   }
+                 }}
                  className=TW.(
                    [
                      BoxShadow(Shadow),
@@ -254,21 +329,6 @@ let make = () => {
                  )
                />
              </div>
-             <button
-            className=TW.(
-            [
-              BackgroundColor(BgOrange400),
-              BackgroundColor(HoverBgOrange500),
-              Display(Block),
-              TextColor(TextBlack),
-              FontWeight(FontBold),
-              Padding(Py2),
-              Padding(Px5),
-              BorderRadius(Rounded),
-            ]
-            |> make
-          ) 
-             >{React.string("Save")}</button>
            </form>
          | Working(_) => React.null
          | OnBreak(_) => React.null
@@ -276,4 +336,4 @@ let make = () => {
       </div>
     </div>
   );
-}
+};
