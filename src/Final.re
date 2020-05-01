@@ -90,41 +90,77 @@ let make = () => {
     | Working({starts, ends})
     | OnBreak({starts, ends}) => progressBar(~starts, ~ends, ~nowMs)
     };
-    // bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded
 
   React.(
-    <div >
-      <button
-className=TW.([BackgroundColor(BgBlue500), TextColor(TextWhite), FontWeight(FontBold), Padding(Py2), Padding(Px4), BorderRadius(Rounded)] |> make)
-        onClick={_ => {
-          let now = Js.Date.now();
-          setState(oldState =>
-            switch (oldState) {
-            | Idle =>
-              Working({starts: now, ends: now +. fiveMinutesInMilliseconds})
-            | _ => Idle
-            }
-          );
-        }}>
-        (
-          switch (state) {
-          | Idle => "Start"
-          | _ => "Stop"
-          }
-        )
-        ->string
-      </button>
+    <div
+      className=TW.(
+        [
+          MaxWidth(MaxW6xl),
+          Margin(MxAuto),
+          Padding(Pt20),
+          TextAlign(TextCenter),
+        ]
+        |> make
+      )>
+      <p
+        className=TW.(
+          [FontSize(Text6xl), FontWeight(FontLight), Margin(Mb4)] |> make
+        )>
+         {switch (state) {
+         | Idle => {j|Click start when you start working|j}->string
+         | Working(_) =>
+           {j|Keep working!|j}->string;
+         | OnBreak(_) =>
+           {j|Stretch your arms.|j}->string;
+         }}
+      </p>
       progress
       <br />
-      {switch (state) {
-       | Idle => {j|No break scheduled|j}->string
-       | Working({ends}) =>
-         let secondsRemaining = int_of_float((ends -. nowMs) /. 1000.0);
-         {j|Next break in $secondsRemaining seconds.|j}->string;
-       | OnBreak({ends}) =>
-         let secondsRemaining = int_of_float((ends -. nowMs) /. 1000.0);
-         {j|On break for another $secondsRemaining seconds|j}->string;
-       }}
+      <span className=TW.([FontSize(TextLg)] |> make)>
+        {switch (state) {
+         | Idle => {j|No break scheduled|j}->string
+         | Working({ends}) =>
+           let secondsRemaining = int_of_float((ends -. nowMs) /. 1000.0);
+           {j|Next break in $secondsRemaining seconds.|j}->string;
+         | OnBreak({ends}) =>
+           let secondsRemaining = int_of_float((ends -. nowMs) /. 1000.0);
+           {j|On break for another $secondsRemaining seconds|j}->string;
+         }}
+      </span>
+      <div className=TW.([Display(Flex), JustifyContent(JustifyCenter), Margin(Mt24)] |> make)>
+        <button
+          className=TW.(
+            [
+              BackgroundColor(BgOrange300),
+              BackgroundColor(HoverBgOrange400),
+              Display(Block),
+              TextColor(TextBlack),
+              FontWeight(FontBold),
+              Padding(Py2),
+              Padding(Px5),
+              BorderRadius(Rounded),
+            ]
+            |> make
+          )
+          onClick={_ => {
+            let now = Js.Date.now();
+            setState(oldState =>
+              switch (oldState) {
+              | Idle =>
+                Working({starts: now, ends: now +. fiveMinutesInMilliseconds})
+              | _ => Idle
+              }
+            );
+          }}>
+          (
+            switch (state) {
+            | Idle => "Start"
+            | _ => "Stop"
+            }
+          )
+          ->string
+        </button>
+      </div>
     </div>
   );
 };
