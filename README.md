@@ -13,10 +13,13 @@
   - [Resources](#resources)
     - [Prepping for the event](#prepping-for-the-event)
     - [Creating a Group DM on Discord](#creating-a-group-dm-on-discord)
+    - [Using Tailwind](#using-tailwind)
   - [Projects Built during this Dojo](#projects-built-during-this-dojo)
   - [Contributing](#contributing)
   - [License](#license)
   - [Thanks!](#thanks)
+- [ReasonReact Template](#reasonreact-template)
+  - [Run](#run)
 
 ## Event Details
 
@@ -84,7 +87,7 @@ One of the hardest parts of virtual meeetups is creating space for free form soc
 If you need help (technical/non-technical), we suggest following this approach:
 1. Ask you group members. If they don't know, chances are they'll be able to tell you where to look/post.
 2. Post in the #general channel - this is where most members hang out and will have high visibility
-3. DM Joe(@jsjoeio) or Sean(@sgrove)
+3. DM Joe(@jsjoeio) or Sean(@sgrove) on Discord
 
 ## Resources
 
@@ -117,6 +120,10 @@ Now that you have that, you can create a group. Follow these steps:
 4. Click "Create Group DM" 
 
 ![screenshot showing the button to click to create a group dm on Discord](images/create-group-dm-button.png)
+
+### Using Tailwind
+
+If you're finding it hard to know what classes to use for Tailwind, take a look at the [bindings](https://github.com/phthhieu/re-tailwind/blob/master/src/TW.re) directly. And if you're not familiar with Tailwind CSS, take a look at [their site](https://tailwindcss.com/).   
 
 ## Projects Built during this Dojo
 
