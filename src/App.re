@@ -47,22 +47,22 @@ let tailwind = TW.make;
      ints and adding floats, but it has its advantages too!
    */
 
+let containerClass =
+  tailwind([
+    MaxWidth(MaxW6xl),
+    Margin(MxAuto),
+    Padding(Pt20),
+    TextAlign(TextCenter),
+  ]);
+
+let headlineClass =
+  tailwind([FontSize(Text6xl), FontWeight(FontLight), Margin(Mb4)]);
+
 [@react.component]
 let make = () => {
   React.(
-    <div
-      className={tailwind([
-        MaxWidth(MaxW6xl),
-        Margin(MxAuto),
-        Padding(Pt20),
-        TextAlign(TextCenter),
-      ])}>
-      <p
-        className={tailwind([
-          FontSize(Text6xl),
-          FontWeight(FontLight),
-          Margin(Mb4),
-        ])}>
+    <div className=containerClass>
+      <p className=headlineClass>
         {j|Stretch your arms, and let's get started|j}->string
       </p>
     </div>
