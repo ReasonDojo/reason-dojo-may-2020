@@ -106,12 +106,10 @@ let make = () => {
         className=TW.(
           [FontSize(Text6xl), FontWeight(FontLight), Margin(Mb4)] |> make
         )>
-         {switch (state) {
+        {switch (state) {
          | Idle => {j|Click start when you start working|j}->string
-         | Working(_) =>
-           {j|Keep working!|j}->string;
-         | OnBreak(_) =>
-           {j|Stretch your arms.|j}->string;
+         | Working(_) => {j|Keep working!|j}->string
+         | OnBreak(_) => {j|Stretch your arms.|j}->string
          }}
       </p>
       progress
@@ -127,7 +125,11 @@ let make = () => {
            {j|On break for another $secondsRemaining seconds|j}->string;
          }}
       </span>
-      <div className=TW.([Display(Flex), JustifyContent(JustifyCenter), Margin(Mt24)] |> make)>
+      <div
+        className=TW.(
+          [Display(Flex), JustifyContent(JustifyCenter), Margin(Mt24)]
+          |> make
+        )>
         <button
           className=TW.(
             [
@@ -161,6 +163,117 @@ let make = () => {
           ->string
         </button>
       </div>
+      // Start of the Input
+      <div
+        className=TW.(
+          [Margin(Mt24), Margin(MxAuto), MaxWidth(MaxWSm)] |> make
+        )>
+        {switch (state) {
+         | Idle =>
+           <form
+             className=TW.(
+               [
+                 BackgroundColor(BgWhite),
+                 BoxShadow(ShadowMd),
+                 BorderRadius(Rounded),
+                 Padding(Px8),
+                 Padding(Pb8),
+                 Margin(Mb4),
+                 Padding(Pt10),
+                 Display(Flex), FlexDirection(FlexCol), AlignItems(ItemsCenter)
+               ]
+               |> make
+             )>
+             <div className=TW.([Margin(Mb4)] |> make)>
+               <label
+                 htmlFor="session-length"
+                 className=TW.(
+                   [
+                     Display(Block),
+                     TextColor(TextGray700),
+                     FontSize(TextSm),
+                     FontWeight(FontBold),
+                     Margin(Mb2),
+                   ]
+                   |> make
+                 )>
+                 {React.string("Length of work sessions (mins)")}
+               </label>
+               <input
+                 id="session-length"
+                 type_="number"
+                 placeholder="25"
+                 className=TW.(
+                   [
+                     BoxShadow(Shadow),
+                     MaxWidth(MaxWXs),
+                     AppearanceNone,
+                     BorderRadius(Rounded),
+                     Padding(Py2),
+                     Padding(Px3),
+                     TextColor(TextGray700),
+                     LineHeight(LeadingTight),
+                     OutlineNone,
+                   ]
+                   |> make
+                 )
+               />
+             </div>
+             <div className=TW.([Margin(Mb4)] |> make)>
+               <label
+                 htmlFor="break-length"
+                 className=TW.(
+                   [
+                     Display(Block),
+                     TextColor(TextGray700),
+                     FontSize(TextSm),
+                     FontWeight(FontBold),
+                     Margin(Mb2),
+                   ]
+                   |> make
+                 )>
+                 {React.string("Length of break (secs)")}
+               </label>
+               <input
+                 id="break-length"
+                 type_="number"
+                 placeholder="20"
+                 className=TW.(
+                   [
+                     BoxShadow(Shadow),
+                     MaxWidth(MaxWXs),
+                     AppearanceNone,
+                     BorderRadius(Rounded),
+                     Padding(Py2),
+                     Padding(Px3),
+                     TextColor(TextGray700),
+                     LineHeight(LeadingTight),
+                     OutlineNone,
+                   ]
+                   |> make
+                 )
+               />
+             </div>
+             <button
+            className=TW.(
+            [
+              BackgroundColor(BgOrange400),
+              BackgroundColor(HoverBgOrange500),
+              Display(Block),
+              TextColor(TextBlack),
+              FontWeight(FontBold),
+              Padding(Py2),
+              Padding(Px5),
+              BorderRadius(Rounded),
+            ]
+            |> make
+          ) 
+             >{React.string("Save")}</button>
+           </form>
+         | Working(_) => React.null
+         | OnBreak(_) => React.null
+         }}
+      </div>
     </div>
   );
-};
+}
