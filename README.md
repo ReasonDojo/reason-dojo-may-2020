@@ -22,6 +22,8 @@
   - [Contributing](#contributing)
   - [License](#license)
   - [Thanks!](#thanks)
+- [ReasonReact Template](#reasonreact-template)
+  - [Run](#run)
 
 ## Event Details
 
