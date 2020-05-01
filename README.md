@@ -68,14 +68,19 @@ As a user, I should be able to:
 - [ ]  set the frequency of my breaks (every 30 mins, every 30 secs).
 - [ ]  configure how long the break should be (5 secs) - make it configurable later
 
-As a web app, it should make sure that:
-- [ ]  the notification is triggered on the interval 
-
 As a user, I should be able to see:
 - [ ]  a progress screen during the break that shows
+    - [ ]  a message
     - [ ]  a progress bar
     - [ ]  how many mins/secs remaining
-    - [ ]  an exit button
+    - [ ]  a stop button
+
+*Stretch Goals:*
+
+If you finish those requirements and want an extra challenge, try some of these:
+
+As a web app, it should make sure that:
+- [ ]  the notification is triggered on the interval 
 
 ### Socializing
 
