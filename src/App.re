@@ -110,7 +110,7 @@ let make = () => {
             Js.log(elapsedTime);
             Js.log(userLengthToSeconds(selectedLength));
             Js.log(elapsedTime > userLengthToSeconds(selectedLength));
-            if (elapsedTime > userLengthToSeconds(selectedLength)) {
+            if (elapsedTime >= userLengthToSeconds(selectedLength)) {
               setElapsedTime(_ => 0);
               setInstructionString(_ => goBackToWork);
             };
