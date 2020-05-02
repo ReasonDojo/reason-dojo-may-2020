@@ -61,7 +61,7 @@ let headlineClass =
 let subheadlineClass =
   tailwind([FontSize(TextXl), FontWeight(FontLight), Margin(Mb4)]);
 
-type userLenght =
+type userLength =
   | TenSecs
   | OneMinute
   | FiveMinutes
