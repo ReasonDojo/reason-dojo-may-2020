@@ -58,13 +58,90 @@ let containerClass =
 let headlineClass =
   tailwind([FontSize(Text6xl), FontWeight(FontLight), Margin(Mb4)]);
 
+let subheadlineClass =
+  tailwind([FontSize(TextXl), FontWeight(FontLight), Margin(Mb4)]);
+
+type userLenght =
+  | TenSecs(int)
+  | OneMinute(int)
+  | FiveMinutes(int)
+  | TenMintues(int);
+
+let userLengthToDisplayString =
+  fun
+  | TenSecs(_) => "10 secs"
+  | OneMinute(_) => "1 minute"
+  | FiveMinutes(_) => "5 minute"
+  | TenMintues(_) => "10 minute";
+
+let stringToUserLenght =
+  fun
+  | "10 secs" => Some(TenSecs(10))
+  | "1 minute" => Some(OneMinute(60))
+  | "5 minute" => Some(FiveMinutes(300))
+  | "10 minute" => Some(TenMintues(600))
+  | _ => None;
+
+let userLengthToSeconds =
+  fun
+  | TenSecs(seconds) => seconds
+  | OneMinute(seconds) => seconds
+  | FiveMinutes(seconds) => seconds
+  | TenMintues(seconds) => seconds;
+
+let (stretchString, goBackToWork) = (
+  "Stretch your arms, and let's get started",
+  "Go back to work",
+);
+
 [@react.component]
 let make = () => {
-  React.(
-    <div className=containerClass>
-      <p className=headlineClass>
-        {j|Stretch your arms, and let's get started|j}->string
-      </p>
-    </div>
+  let (instructionString, setInstructionString) =
+    React.useState(() => stretchString);
+  let (selectedLength, setSelectedLength) =
+    React.useState(() => TenSecs(10));
+  let (elapsedTime, setElapsedTime) = React.useState(() => 0);
+  React.useEffect2(
+    () => {
+      let intervalId =
+        Js.Global.setInterval( // Use UseRef to clear interval
+          () => {
+            setElapsedTime(oldtime => oldtime + 1);
+            Js.log(elapsedTime);
+            Js.log(userLengthToSeconds(selectedLength));
+            Js.log(elapsedTime > userLengthToSeconds(selectedLength));
+            if (elapsedTime > userLengthToSeconds(selectedLength)) {
+              setElapsedTime(_ => 0);
+              setInstructionString(_ => goBackToWork);
+            };
+          },
+          1000,
+        );
+      Some(() => Js.Global.clearInterval(intervalId));
+    },
+    (selectedLength, elapsedTime),
   );
+  <div className=containerClass>
+    <p className=headlineClass> instructionString->React.string </p>
+    <p className=subheadlineClass>
+      {selectedLength->userLengthToDisplayString->React.string}
+    </p>
+    <p className=subheadlineClass>
+      {elapsedTime->string_of_int->React.string}
+    </p>
+    <select
+      ariaLabel="Country"
+      className="form-select h-full py-0 pl-4 pr-8 border-transparent bg-transparent text-white transition ease-in-out duration-150"
+      onChange={e => {
+        let value = e->ReactEvent.Form.target##value->stringToUserLenght;
+        setInstructionString(_ => stretchString);
+        setElapsedTime(_ => 0);
+        value->Belt.Option.forEach(value => setSelectedLength(_ => value));
+      }}>
+      <option> {React.string("10 secs")} </option>
+      <option> {React.string("1 minute")} </option>
+      <option> {"5 minute" |> React.string} </option> // pipe last
+      <option> "10 minute"->React.string </option>
+    </select>
+  </div>; // pipe first
 };
