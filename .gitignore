@@ -1,2 +1,8 @@
 .DS_Store
 ./node_modules
+.idea/
+.merlin
+lib/
+node_modules/
+**.bs.js
+.bsb.lock
