@@ -150,8 +150,8 @@ let make = () => {
       }}>
       <option> {React.string("10 secs")} </option>
       <option> {React.string("1 minute")} </option>
-      <option> {"5 minute" |> React.string} </option> // pipe last
+      <option> {"5 minute" |> React.string} </option>
       <option> "10 minute"->React.string </option>
     </select>
-  </div>; // pipe first
+  </div>;
 };
