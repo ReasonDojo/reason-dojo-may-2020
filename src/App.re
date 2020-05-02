@@ -100,26 +100,36 @@ let make = () => {
     React.useState(() => stretchString);
   let (selectedLength, setSelectedLength) = React.useState(() => TenSecs);
   let (elapsedTime, setElapsedTime) = React.useState(() => 0);
-  React.useEffect2(
+  React.useEffect1(
     () => {
+      Js.log(1000 * userLengthToSeconds(selectedLength));
       let intervalId =
         Js.Global.setInterval(
-          // Use UseRef to clear interval
           () => {
             setElapsedTime(oldtime => oldtime + 1);
-            Js.log(elapsedTime);
+            Js.log(elapsedTime); // this doesn't get updated, which is fine
             Js.log(userLengthToSeconds(selectedLength));
-            Js.log(elapsedTime > userLengthToSeconds(selectedLength));
-            if (elapsedTime >= userLengthToSeconds(selectedLength)) {
-              setElapsedTime(_ => 0);
-              setInstructionString(_ => goBackToWork);
-            };
           },
           1000,
         );
-      Some(() => Js.Global.clearInterval(intervalId));
+      let timeoutId =
+        Js.Global.setTimeout(
+          () => {
+            Js.log("Timeout worked");
+            Js.Global.clearInterval(intervalId);
+            setElapsedTime(_ => 0);
+            setInstructionString(_ => goBackToWork);
+          },
+          1000 * userLengthToSeconds(selectedLength),
+        );
+      Some(
+        () => {
+          Js.Global.clearInterval(intervalId);
+          Js.Global.clearTimeout(timeoutId);
+        },
+      );
     },
-    (selectedLength, elapsedTime),
+    [|selectedLength|] // do not depend on elapsed time because it will trigger hook every second if you do
   );
   <div className=containerClass>
     <p className=headlineClass> instructionString->React.string </p>
