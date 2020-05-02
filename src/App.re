@@ -62,32 +62,32 @@ let subheadlineClass =
   tailwind([FontSize(TextXl), FontWeight(FontLight), Margin(Mb4)]);
 
 type userLenght =
-  | TenSecs(int)
-  | OneMinute(int)
-  | FiveMinutes(int)
-  | TenMintues(int);
+  | TenSecs
+  | OneMinute
+  | FiveMinutes
+  | TenMinutes;
 
 let userLengthToDisplayString =
   fun
-  | TenSecs(_) => "10 secs"
-  | OneMinute(_) => "1 minute"
-  | FiveMinutes(_) => "5 minute"
-  | TenMintues(_) => "10 minute";
+  | TenSecs => "10 secs"
+  | OneMinute => "1 minute"
+  | FiveMinutes => "5 minute"
+  | TenMinutes => "10 minute";
 
 let stringToUserLenght =
   fun
-  | "10 secs" => Some(TenSecs(10))
-  | "1 minute" => Some(OneMinute(60))
-  | "5 minute" => Some(FiveMinutes(300))
-  | "10 minute" => Some(TenMintues(600))
+  | "10 secs" => Some(TenSecs)
+  | "1 minute" => Some(OneMinute)
+  | "5 minute" => Some(FiveMinutes)
+  | "10 minute" => Some(TenMinutes)
   | _ => None;
 
 let userLengthToSeconds =
   fun
-  | TenSecs(seconds) => seconds
-  | OneMinute(seconds) => seconds
-  | FiveMinutes(seconds) => seconds
-  | TenMintues(seconds) => seconds;
+  | TenSecs => 10
+  | OneMinute => 60
+  | FiveMinutes => 300
+  | TenMinutes => 600;
 
 let (stretchString, goBackToWork) = (
   "Stretch your arms, and let's get started",
@@ -98,13 +98,13 @@ let (stretchString, goBackToWork) = (
 let make = () => {
   let (instructionString, setInstructionString) =
     React.useState(() => stretchString);
-  let (selectedLength, setSelectedLength) =
-    React.useState(() => TenSecs(10));
+  let (selectedLength, setSelectedLength) = React.useState(() => TenSecs);
   let (elapsedTime, setElapsedTime) = React.useState(() => 0);
   React.useEffect2(
     () => {
       let intervalId =
-        Js.Global.setInterval( // Use UseRef to clear interval
+        Js.Global.setInterval(
+          // Use UseRef to clear interval
           () => {
             setElapsedTime(oldtime => oldtime + 1);
             Js.log(elapsedTime);
