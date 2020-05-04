@@ -174,8 +174,6 @@ Mods:
 
 Link: <https://github.com/ReasonDojo/reason-dojo-may-2020#creating-a-group-dm-on-discord>
 
-##############################
-
 4. Group DMs will be created by the first person listed in the group.
 
 ### How am I going to shared an editor or my IDE with my group memebers?
