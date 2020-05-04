@@ -196,6 +196,8 @@ After this event, we will invite groups to open PRs to add links to their projec
 
 We welcome contributions! If you would like to submit your project, fix a typo, or make a suggestion, please open a pull request. 
 
+If you submit your project, please add it in it's own folder inside `/group-submissions`.
+
 ## License
 
 This repo, the code and the event materials are all licensed under the MIT License. Please see [LICENSE](./LICENSE) for more details.
