@@ -127,6 +127,10 @@ Now that you have that, you can create a group. Follow these steps:
 
 ![screenshot showing the button to click to create a group dm on Discord](images/create-group-dm-button.png)
 
+An alternative approach is to create a link to join the Group DM. Here's a gif showing you how to do it:
+
+![Create a group dm link on Discord](images/discord-group-dm-link.gif)
+
 ## FAQ
 
 ### How will teams be divided up?
