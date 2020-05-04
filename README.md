@@ -16,7 +16,7 @@
   - [FAQ](#faq)
     - [How will teams be divided up?](#how-will-teams-be-divided-up)
   - [EXPERIENCE POLL MESSAGE TEMPLATE](#experience-poll-message-template)
-  - [>4️⃣ = "I work full time in Reason"](#blockquote-4%ef%b8%8f%e2%83%a3--%22i-work-full-time-in-reason%22-blockquote)
+  - [4️⃣ = "I work full time in Reason"](#4%ef%b8%8f%e2%83%a3--%22i-work-full-time-in-reason%22)
   - [GROUP ANNOUNCMENT MESSAGE TEMPLATE](#group-announcment-message-template)
   - [- sgrove#7438](#ul-lisgrove7438li-ul)
     - [How am I going to shared an editor or my IDE with my group memebers?](#how-am-i-going-to-shared-an-editor-or-my-ide-with-my-group-memebers)
@@ -147,15 +147,15 @@ When it comes time to split up team members, here's what will happen:
 
 EXPERIENCE POLL MESSAGE TEMPLATE
 ---
-> To divide up the groups evenly, please identify your experience level based on the following:
->
->1️⃣ = "I'm new to Reason/I tried it online, but never set up a project for it"
->
->2️⃣ = "I've set up a small side project"
->
->3️⃣ = "I've published a project written in Reason"
->
->4️⃣ = "I work full time in Reason"
+To divide up the groups evenly, please identify your experience level based on the following:
+
+1️⃣ = "I'm new to Reason/I tried it online, but never set up a project for it"
+
+2️⃣ = "I've set up a small side project"
+
+3️⃣ = "I've published a project written in Reason"
+
+4️⃣ = "I work full time in Reason"
 ---
 
 3. After all attendees respond, the moderator will post a second message with the groups.
