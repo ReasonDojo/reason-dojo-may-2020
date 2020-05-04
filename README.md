@@ -85,7 +85,6 @@ As a web app, it should make sure that:
 ### Socializing
 
 One of the hardest parts of virtual meeetups is creating space for free form socializing. To combat this, we will have three places you can socialize during the event:
-- Zoom: we will keep the main Zoom going during the Hacking Session. Feel free to stay on and chat with others.
 - Discord #general voice chat room: this is a room where you can voice chat with others
 - #bikeshedding: a Discord channel that is great for chatting about anything really
 
