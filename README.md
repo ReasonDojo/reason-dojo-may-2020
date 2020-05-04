@@ -18,7 +18,7 @@
   - [EXPERIENCE POLL MESSAGE TEMPLATE](#experience-poll-message-template)
   - [4️⃣ = "I work full time in Reason"](#4%ef%b8%8f%e2%83%a3--%22i-work-full-time-in-reason%22)
   - [GROUP ANNOUNCMENT MESSAGE TEMPLATE](#group-announcment-message-template)
-  - [- sgrove#7438](#ul-lisgrove7438li-ul)
+  - [Link: <https://github.com/ReasonDojo/reason-dojo-may-2020#creating-a-group-dm-on-discord>](#link-httpsgithubcomreasondojoreason-dojo-may-2020creating-a-group-dm-on-discord)
     - [How am I going to shared an editor or my IDE with my group memebers?](#how-am-i-going-to-shared-an-editor-or-my-ide-with-my-group-memebers)
     - [How am I going to chat with my group members?](#how-am-i-going-to-chat-with-my-group-members)
     - [How will the moderators be able to check-in with each group?](#how-will-the-moderators-be-able-to-check-in-with-each-group)
@@ -176,10 +176,10 @@ Please make sure to add both of the moderators to your group as well. This will 
 Mods:
 - jsjoeio#7954
 - sgrove#7438 
----
 
 Link: <https://github.com/ReasonDojo/reason-dojo-may-2020#creating-a-group-dm-on-discord>
-```
+---
+
 4. Group DMs will be created by the first person listed in the group.
 
 ### How am I going to shared an editor or my IDE with my group memebers?
