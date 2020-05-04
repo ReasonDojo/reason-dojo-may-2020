@@ -140,7 +140,7 @@ Ideally, each group will have 3 or more members. We will divide teams up evenly 
 When it comes time to split up team members, here's what will happen:
 1. One of the moderators will let you know that it's time for team formation
 2. They will post on the #reason-dojo asking each person to react to the message with an emoji based on their experience (legend will be provided). Here's an example:
-```markdown
+```text
 EXPERIENCE POLL MESSAGE TEMPLATE
 ---
 To divide up the groups evenly, please identify your experience level based on the following:
