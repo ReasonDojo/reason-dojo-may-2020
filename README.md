@@ -15,6 +15,10 @@
     - [Creating a Group DM on Discord](#creating-a-group-dm-on-discord)
   - [FAQ](#faq)
     - [How will teams be divided up?](#how-will-teams-be-divided-up)
+  - [EXPERIENCE POLL MESSAGE TEMPLATE](#experience-poll-message-template)
+  - [4️⃣ = "I work full time in Reason"](#4%ef%b8%8f%e2%83%a3--%22i-work-full-time-in-reason%22)
+  - [GROUP ANNOUNCMENT MESSAGE TEMPLATE](#group-announcment-message-template)
+  - [- sgrove#7438](#ul-lisgrove7438li-ul)
     - [How am I going to shared an editor or my IDE with my group memebers?](#how-am-i-going-to-shared-an-editor-or-my-ide-with-my-group-memebers)
     - [How am I going to chat with my group members?](#how-am-i-going-to-chat-with-my-group-members)
     - [How will the moderators be able to check-in with each group?](#how-will-the-moderators-be-able-to-check-in-with-each-group)
@@ -142,7 +146,7 @@ When it comes time to split up team members, here's what will happen:
 2. They will post on the #reason-dojo asking each person to react to the message with an emoji based on their experience (legend will be provided). Here's an example:
 
 EXPERIENCE POLL MESSAGE TEMPLATE
-
+---
 To divide up the groups evenly, please identify your experience level based on the following:
 
 1️⃣ = "I'm new to Reason/I tried it online, but never set up a project for it"
@@ -152,10 +156,10 @@ To divide up the groups evenly, please identify your experience level based on t
 3️⃣ = "I've published a project written in Reason"
 
 4️⃣ = "I work full time in Reason"
-
+---
 
 3. After all attendees respond, the moderator will post a second message with the groups.
-```markdown
+
 GROUP ANNOUNCMENT MESSAGE TEMPLATE
 ---
 Here are the groups:
@@ -172,6 +176,7 @@ Please make sure to add both of the moderators to your group as well. This will 
 Mods:
 - jsjoeio#7954
 - sgrove#7438 
+---
 
 Link: <https://github.com/ReasonDojo/reason-dojo-may-2020#creating-a-group-dm-on-discord>
 ```
