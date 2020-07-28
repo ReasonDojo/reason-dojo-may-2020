@@ -19,6 +19,7 @@
     - [How am I going to chat with my group members?](#how-am-i-going-to-chat-with-my-group-members)
     - [How will the moderators be able to check-in with each group?](#how-will-the-moderators-be-able-to-check-in-with-each-group)
   - [Projects Built during this Dojo](#projects-built-during-this-dojo)
+  - [Recording(#recording)
   - [Contributing](#contributing)
   - [License](#license)
   - [Thanks!](#thanks)
@@ -190,7 +191,11 @@ When you create the Group DM, make sure to add both of the moderators -- jsjoeio
 
 ## Projects Built during this Dojo
 
-After this event, we will invite groups to open PRs to add links to their projects here:
+Groups submitted their projects under [group submissions](group-submissions/README.md)
+
+## Recording
+
+You can find a recording of this event on [YouTube](https://www.youtube.com/watch?v=Y3-wCA0zdhM). 
 
 ## Contributing
 
